@@ -2,6 +2,8 @@ package org.example;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -10,12 +12,12 @@ public class Main {
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("jdbc:mysql://localhost:3306/quizdb", "root", "password");
         try {
             Connection connection = dcm.getConnection();
-            QuestionDao questionDao = new QuestionDao(connection);
-            //Question question = new Question("Who is President of Estonia?", 2, 3);
-            //questionDao.create(question);
-
-            Question questionUpdate = new Question(3, "who is who?", 5, 2);
-            questionDao.update(questionUpdate);
+            QuestionDaoImpl questionDaoImpl = new QuestionDaoImpl(connection);
+            Integer topicId = 3;
+            List<Question> questions = questionDaoImpl.findAllByTopicId(3);
+            for (Question question : questions){
+                System.out.println(question.getId());
+            }
 
 
         } catch (SQLException e) {
