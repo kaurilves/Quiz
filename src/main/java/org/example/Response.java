@@ -1,10 +1,9 @@
-package org.example.entities;
+package org.example;
 
-import java.util.UUID;
 
 public class Response {
-    private UUID id;
-    private UUID questionId;
+    private Integer id;
+    private Integer questionId;
     private String name;
     private Boolean isCorrect;
 }

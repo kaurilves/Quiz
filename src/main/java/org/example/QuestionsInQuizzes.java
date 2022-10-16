@@ -1,9 +1,8 @@
-package org.example.entities;
+package org.example;
 
-import java.util.UUID;
 
 public class QuestionsInQuizzes {
-    private UUID id;
-    private UUID quizId;
-    private UUID questionId;
+    private Integer id;
+    private Integer quizId;
+    private Integer questionId;
 }

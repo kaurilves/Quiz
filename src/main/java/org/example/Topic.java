@@ -1,8 +1,7 @@
-package org.example.entities;
+package org.example;
 
-import java.util.UUID;
 
 public class Topic {
-    private UUID id;
+    private Integer id;
     private String name;
 }
