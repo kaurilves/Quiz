@@ -14,6 +14,7 @@ public class QuestionDao {
     private static final String GET_ONE = "SELECT ID,NAME,DIFFICULTY_RANK,TOPICS_ID FROM questions WHERE ID=?";
     private static final String UPDATE = "UPDATE questions SET NAME =?, DIFFICULTY_RANK=?, TOPICS_ID=? WHERE ID=?";
     private static final String DELETE = "DELETE FROM questions WHERE ID=?";
+    private static final String GET_ALL = "SELECT * FROM questions";
     private static final String GET_LIST_BY_TOPIC = "SELECT * FROM questions WHERE TOPICS_ID=?";
 
 
@@ -64,6 +65,26 @@ public class QuestionDao {
         return question;
     }
 
+    public List<Question> findAll () {
+        List<Question> questions = new ArrayList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(GET_ALL);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Question question = new Question();
+                question.setId(rs.getInt("ID"));
+                question.setName(rs.getString("NAME"));
+                question.setDifficultyRank(rs.getInt("DIFFICULTY_RANK"));
+                question.setTopicId(rs.getInt("TOPICS_ID"));
+                questions.add(question);
+            }
+        }  catch(Exception e) {
+            e.printStackTrace();
+        }
+        return questions;
+    }
+
     public void update(Question question) {
 
         try{
@@ -78,7 +99,6 @@ public class QuestionDao {
             e.printStackTrace();
         }
     }
-
 
     public void delete(Integer id) {
         try{
