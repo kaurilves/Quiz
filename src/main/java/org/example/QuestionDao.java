@@ -10,6 +10,7 @@ import java.util.List;
 public class QuestionDao {
 
     public static Connection connection;
+
     private static final String INSERT = "INSERT into questions(NAME,DIFFICULTY_RANK,TOPICS_ID) VALUES(?,?,?)";
     private static final String GET_ONE = "SELECT ID,NAME,DIFFICULTY_RANK,TOPICS_ID FROM questions WHERE ID=?";
     private static final String UPDATE = "UPDATE questions SET NAME =?, DIFFICULTY_RANK=?, TOPICS_ID=? WHERE ID=?";
@@ -18,7 +19,8 @@ public class QuestionDao {
     private static final String GET_LIST_BY_TOPIC = "SELECT * FROM questions WHERE TOPICS_ID=?";
 
 
-    public QuestionDao(){
+
+    public  QuestionDao(){
         if(connection == null){
             String dbUrl = "jdbc:mysql://localhost:3306/quizdb";
             try {
@@ -29,7 +31,8 @@ public class QuestionDao {
         }
     }
 
-    public void create(Question question) {
+
+        public void create(Question question) {
 
         try{
             PreparedStatement ps = connection.prepareStatement(INSERT);
