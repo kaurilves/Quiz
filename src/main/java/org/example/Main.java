@@ -2,7 +2,6 @@ package org.example;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -13,12 +12,6 @@ public class Main {
         try {
             Connection connection = dcm.getConnection();
             QuestionDaoImpl questionDaoImpl = new QuestionDaoImpl(connection);
-            Integer topicId = 3;
-            List<Question> questions = questionDaoImpl.findAllByTopicId(3);
-            for (Question question : questions){
-                System.out.println(question.getId());
-            }
-
 
         } catch (SQLException e) {
 
